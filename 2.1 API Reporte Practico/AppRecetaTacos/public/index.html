@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TacosMx</title>
+</head>
+<body>
+    <h1>TacosChidos🌮</H1>
+          
+    <form id="Form" class="buttons">
+        <button type="button" data-type="Cochinita">🐷</button>
+        <button type="button" data-type="Pollo">🐔</button>
+        <button type="button" data-type="Pescado">🐟</button>
+        <button type="button" data-type="Pavo">🦃</button>
+    </form>
+
+    <div id="Container"></div>
+
+    <script>
+        document.querySelectorAll("#Form button").forEach(button => {
+    button.addEventListener("click", async (event) => {
+        const type = event.target.getAttribute("data-type").toLowerCase();
+        
+        try {
+            const response = await fetch(`/receta/${type}`);
+            const receta = await response.json();
+
+            const contenedor = document.getElementById("Container");
+            if (receta.error) {
+                contenedor.innerHTML = "<h2 class='error-message'>Receta no encontrada</h2>";
+            } else {
+                contenedor.innerHTML = `
+                    <div class="receta-container">
+                        <h1 class="titulo-principal">Tacoschidos</h1>
+                        <h2 class="nombre-taco">${receta.nombre}</h2>
+                        
+                        <div class="ingredientes-box">
+                            <h3 class="ingredientes-titulo">Ingredientes:</h3>
+                            
+                            <div class="ingrediente-linea">
+                                <span class="ingrediente-texto">Carne de: ${receta.ingredientes.proteina.nombre}</span>
+                                <span class="ingrediente-texto">Preparación: ${receta.ingredientes.proteina.preparacion}</span>
+                            </div>
+                            
+                            <div class="ingrediente-linea">
+                                <span class="ingrediente-texto">Salsa: ${receta.ingredientes.salsa.nombre}</span>
+                                <span class="ingrediente-texto">Picor: ${receta.ingredientes.salsa.pico}</span>
+                            </div>
+                            
+                            ${receta.ingredientes.acompañamientos.map(acomp => `
+                                <div class="ingrediente-linea">
+                                    <span class="acompanamiento-texto">${acomp.cantidad}</span>
+                                    <span class="acompanamiento-texto">${acomp.nombre}</span>
+                                </div>
+                            `).join("")}
+                        </div>
+                    </div>
+                `;
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            contenedor.innerHTML = "<h2 class='error-message'>Error al cargar la receta</h2>";
+        }
+    });
+});
+    </script>
+</body>
+</html>

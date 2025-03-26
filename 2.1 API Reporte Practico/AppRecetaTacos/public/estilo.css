@@ -1,0 +1,96 @@
+/* Contenedor principal */
+.receta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Textos grandes y centrados */
+.titulo-principal {
+    font-size: 3.5rem;
+    color: #E63946;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.nombre-taco {
+    font-size: 2.5rem;
+    color: #1D3557;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+.ingredientes-box {
+    background-color: #F1FAEE;
+    border-radius: 15px;
+    padding: 30px;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.ingredientes-titulo {
+    font-size: 2rem;
+    color: #457B9D;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.ingrediente-linea {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.ingrediente-texto {
+    font-size: 1.8rem;
+    color: #1D3557;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.acompanamiento-texto {
+    font-size: 1.6rem;
+    color: #1D3557;
+    text-align: center;
+}
+
+.error-message {
+    font-size: 2.5rem;
+    color: #E63946;
+    text-align: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .titulo-principal {
+        font-size: 2.5rem;
+    }
+    
+    .nombre-taco {
+        font-size: 2rem;
+    }
+    
+    .ingredientes-titulo {
+        font-size: 1.8rem;
+    }
+    
+    .ingrediente-texto {
+        font-size: 1.4rem;
+    }
+    
+    .acompanamiento-texto {
+        font-size: 1.2rem;
+    }
+}
