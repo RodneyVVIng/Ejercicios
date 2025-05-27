@@ -1,0 +1,9 @@
+{
+    "scripts": {
+    "test": "jest",
+    "test:verbose": "jest --verbose"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
